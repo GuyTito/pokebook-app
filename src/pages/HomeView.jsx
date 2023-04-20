@@ -46,7 +46,7 @@ const Div = styled.div`
     margin-bottom: 8px;
 
     span {
-      color: #de527f;
+      color: var(--theme-color);
     }
   }
 
@@ -62,7 +62,7 @@ const Div = styled.div`
     display: flex;
     justify-content: space-between;
     width: 536px;
-    border: 10px solid #de527f;
+    border: 10px solid var(--theme-color);
     padding: 8px 9px 8px 20px;
     border-radius: 60px;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.08);
@@ -72,14 +72,14 @@ const Div = styled.div`
       width: 100%;
       outline: none;
       font-size: 24px;
-      color: #7b7b7b;
+      color: var(--text-gray);
       background-color: transparent;
       /* border: 1px solid green; */
     }
 
     button {
       padding: 14px;
-      background-color: #de527f;
+      background-color: var(--theme-color);
       color: white;
       border-radius: 50%;
       font-size: 20px;
