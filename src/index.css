@@ -2,6 +2,12 @@
 @import url('https://fonts.cdnfonts.com/css/general-sans');
 @import url('./styles/preflight.css');
 
+:root {
+  --theme-color: #de527f;
+  --text-gray: #7b7b7b;
+}
+
 body {
   font-family: 'General Sans', sans-serif;
+  background-image: url("./assets/main_bg.png");
 }
