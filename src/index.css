@@ -1,1 +1,7 @@
+@import url('https://fonts.cdnfonts.com/css/clash-display');
+@import url('https://fonts.cdnfonts.com/css/general-sans');
 @import url('./styles/preflight.css');
+
+body {
+  font-family: 'General Sans', sans-serif;
+}
