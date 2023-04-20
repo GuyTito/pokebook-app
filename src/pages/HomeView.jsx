@@ -42,7 +42,7 @@ const Div = styled.div`
     font-weight: 600;
     font-size: 48px;
     line-height: 59px;
-    font-family: "Clash Display", sans-serif;
+    font-family: var(--heading);
     margin-bottom: 8px;
 
     span {
