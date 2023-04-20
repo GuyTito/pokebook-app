@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import MainBg from "../assets/main_bg.png";
 import Logo from "../assets/logo.svg";
 import SearchIcon from "../assets/search.svg";
 
@@ -26,7 +25,7 @@ export default function App() {
       </form>
 
       <div className="link">
-        <Link to="/">View all</Link>
+        <Link to="listview">View all</Link>
       </div>
     </Div>
   );
@@ -38,7 +37,6 @@ const Div = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-image: url(${MainBg});
 
   h1 {
     font-weight: 600;
