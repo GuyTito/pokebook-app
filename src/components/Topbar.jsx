@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import GrSearchIcon from "../assets/gray_search_icon.svg";
 import Logo from "../assets/logo.svg";
+import { Link } from "react-router-dom";
 
 export default function Topbar() {
   return (
     <Div>
-      <div className="brand">
+      <Link to="/" className="brand">
         <img src={Logo} alt="pokebook logo" />
         <h1>
           Poké<span>book</span>
         </h1>
-      </div>
+      </Link>
 
       <form>
         <label htmlFor="search">
@@ -53,7 +54,7 @@ const Div = styled.div`
       font-size: 24px;
       line-height: 30px;
       margin-left: 180px;
-      font-family: "Clash Display", sans-serif;
+      font-family: var(--heading);
 
       span {
         color: var(--theme-color);
