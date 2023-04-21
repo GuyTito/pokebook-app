@@ -1,12 +1,30 @@
 import styled from "styled-components";
 
-export default function Tabs() {
+export default function Tabs({ swithContent, tabs }) {
+  function handleClick(tab) {
+    swithContent(tab);
+  }
   return (
     <Div>
       <div>
-        <button className="selected">About</button>
-        <button>Stats</button>
-        <button>Similar</button>
+        <button
+          className={tabs.about ? "selected" : ""}
+          onClick={() => handleClick("about")}
+        >
+          About
+        </button>
+        <button
+          className={tabs.stats ? "selected" : ""}
+          onClick={() => handleClick("stats")}
+        >
+          Stats
+        </button>
+        <button
+          className={tabs.similar ? "selected" : ""}
+          onClick={() => handleClick("similar")}
+        >
+          Similar
+        </button>
       </div>
     </Div>
   );
@@ -16,9 +34,12 @@ const Div = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 127px;
+  margin-top: 20px;
   box-shadow: 0px 0px 94px rgba(0, 0, 0, 0.07);
   padding: 17px 0;
+  /* position: sticky;
+  bottom: 0;
+  width: 100%; */
 
   div {
     background: #e9e9e9;

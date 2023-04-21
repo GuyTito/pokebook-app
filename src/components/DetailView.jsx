@@ -3,22 +3,43 @@ import Modal from "./Modal";
 import { hideDetailView } from "../store/modalSlice";
 import { useDispatch } from "react-redux";
 import Cover from "./Cover";
-import Content from "./Content";
 import Tabs from "./Tabs";
+import About from "./About";
+import Stats from "./Stats";
+import Similar from "./Similar";
+import { useState } from "react";
 
 export default function DetailView() {
   const dispatch = useDispatch();
+  const [tabs, setTabs] = useState({
+    about: true,
+    similar: false,
+    stats: false,
+  });
+
+  const swithContent = (property) => {
+    setTabs((prevTabs) => ({
+      ...Object.fromEntries(
+        Object.entries(prevTabs).map(([key, value]) => [key, false])
+      ),
+      [property]: true,
+    }));
+  };
 
   return (
     <Modal hideModal={() => dispatch(hideDetailView())} position="end">
       <Div>
-        <Cover />
+        <div>
+          <Cover />
 
-        <h1>Charizard</h1>
+          <h1>Charizard</h1>
 
-        <Content />
+          {tabs.about && <About />}
+          {tabs.stats && <Stats />}
+          {tabs.similar && <Similar />}
+        </div>
 
-        <Tabs />
+        <Tabs swithContent={swithContent} tabs={tabs} />
       </Div>
     </Modal>
   );
@@ -27,8 +48,10 @@ export default function DetailView() {
 const Div = styled.div`
   height: 100vh;
   background-color: white;
-  /* padding: 17px; */
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   h1 {
     font-family: var(--font-clash);
