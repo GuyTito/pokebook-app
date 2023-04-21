@@ -37,12 +37,13 @@ const Div = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
+  /* background-image: url(${MainBg}); */
 
   h1 {
     font-weight: 600;
     font-size: 48px;
     line-height: 59px;
-    font-family: var(--heading);
+    font-family: var(--font-clash);
     margin-bottom: 8px;
 
     span {

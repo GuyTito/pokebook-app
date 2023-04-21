@@ -54,7 +54,7 @@ const Div = styled.div`
       font-size: 24px;
       line-height: 30px;
       margin-left: 180px;
-      font-family: var(--heading);
+      font-family: var(--font-clash);
 
       span {
         color: var(--theme-color);

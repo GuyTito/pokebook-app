@@ -5,7 +5,7 @@
 :root {
   --theme-color: #de527f;
   --text-gray: #7b7b7b;
-  --heading: "Clash Display", sans-serif;
+  --font-clash: "Clash Display", sans-serif;
 }
 
 body {

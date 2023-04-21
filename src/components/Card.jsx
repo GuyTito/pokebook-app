@@ -68,7 +68,7 @@ const Div = styled.div`
   }
 
   h2 {
-    font-family: var(--heading);
+    font-family: var(--font-clash);
     font-weight: 500;
     font-size: 24px;
     line-height: 30px;
