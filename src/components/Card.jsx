@@ -2,9 +2,17 @@ import styled from "styled-components";
 import Charizard from "../assets/charizard.svg";
 import EyeIcon from "../assets/eye_icon.svg";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { showDetailView } from "../store/modalSlice";
 
 export default function Card() {
   const [showButton, setShowButton] = useState(false);
+  const dispatch = useDispatch();
+
+  function handleClick() {
+    dispatch(showDetailView());
+  }
+
   return (
     <Div
       style={showButton ? flatBottom : {}}
@@ -24,7 +32,7 @@ export default function Card() {
 
       {showButton && (
         <div className="btn-container">
-          <button type="button">
+          <button type="button" onClick={handleClick}>
             <span>View Pokemon</span>
             <img src={EyeIcon} alt="eye icon" />
           </button>
@@ -92,7 +100,7 @@ const Div = styled.div`
     padding-bottom: 13px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    z-index: 99999;
+    z-index: 9;
 
     button {
       padding: 12px 20px;
