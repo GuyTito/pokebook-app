@@ -12,7 +12,6 @@ export default function CardList() {
 }
 
 const Div = styled.div`
-  margin: 0 120px;
   margin-top: 110px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
