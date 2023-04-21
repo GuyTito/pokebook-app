@@ -1,9 +1,16 @@
 import styled from "styled-components";
 import Charizard from "../assets/charizard.svg";
+import EyeIcon from "../assets/eye_icon.svg";
+import { useState } from "react";
 
 export default function Card() {
+  const [showButton, setShowButton] = useState(false);
   return (
-    <Div>
+    <Div
+      style={showButton ? flatBottom : {}}
+      onMouseEnter={() => setShowButton(true)}
+      onMouseLeave={() => setShowButton(false)}
+    >
       <div className="pic">
         <img src={Charizard} alt="" />
       </div>
@@ -14,6 +21,15 @@ export default function Card() {
         <div>🔥 Fire</div>
         <div>🔥 Fire</div>
       </div>
+
+      {showButton && (
+        <div className="btn-container">
+          <button type="button">
+            <span>View Pokemon</span>
+            <img src={EyeIcon} alt="eye icon" />
+          </button>
+        </div>
+      )}
     </Div>
   );
 }
@@ -25,7 +41,8 @@ const Div = styled.div`
   border-radius: 20px;
   padding: 0 10px;
   padding-top: 10px;
-  padding-bottom: 23px;
+  max-height: 330px;
+  position: relative;
 
   .pic {
     background-color: #f1f1f1;
@@ -57,6 +74,7 @@ const Div = styled.div`
     gap: 10px;
     font-size: 16px;
     line-height: 22px;
+    margin-bottom: 23px;
 
     div {
       background: #eeeeee;
@@ -64,4 +82,34 @@ const Div = styled.div`
       padding: 4px 12px;
     }
   }
+
+  .btn-container {
+    background: white;
+    width: 288px;
+    position: absolute;
+    left: 0;
+    padding: 0 10px;
+    padding-bottom: 13px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 99999;
+
+    button {
+      padding: 12px 20px;
+      background: var(--theme-color);
+      border-radius: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+      font-size: 16px;
+      line-height: 22px;
+      width: 100%;
+    }
+  }
 `;
+
+const flatBottom = {
+  borderBottomLeftRadius: 0,
+  borderBottomRightRadius: 0,
+};
