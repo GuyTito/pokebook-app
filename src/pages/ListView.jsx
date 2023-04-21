@@ -17,12 +17,13 @@ export default function ListView() {
 }
 
 const Div = styled.div`
+  margin-bottom: 120px;
   .card-list {
     margin: 0 120px;
     margin-top: 110px;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 52px;
+    gap: 67px;
     justify-content: center;
   }
 `;
