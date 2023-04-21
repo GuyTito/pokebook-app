@@ -1,17 +1,12 @@
 import styled from "styled-components";
 import GrSearchIcon from "../assets/gray_search_icon.svg";
-import Logo from "../assets/logo.svg";
-import { Link } from "react-router-dom";
+import Theme from "./Theme";
+import Brand from "./Brand";
 
 export default function Topbar() {
   return (
     <Div>
-      <Link to="/" className="brand">
-        <img src={Logo} alt="pokebook logo" />
-        <h1>
-          Poké<span>book</span>
-        </h1>
-      </Link>
+      <Brand />
 
       <form>
         <label htmlFor="search">
@@ -20,9 +15,7 @@ export default function Topbar() {
         <input type="text" name="search" placeholder="Enter name of pokemon" />
       </form>
 
-      <div className="theme-button">
-        <div></div>
-      </div>
+      <Theme />
     </Div>
   );
 }
@@ -35,32 +28,6 @@ const Div = styled.div`
   padding-bottom: 12px;
   padding-right: 52px;
   box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.05);
-
-  .brand {
-    display: flex;
-    align-items: center;
-    position: relative;
-
-    img {
-      width: 129.43px;
-      height: 84px;
-      position: absolute;
-      left: 38px;
-      top: -12px;
-    }
-
-    h1 {
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 30px;
-      margin-left: 180px;
-      font-family: var(--font-clash);
-
-      span {
-        color: var(--theme-color);
-      }
-    }
-  }
 
   form {
     display: flex;
@@ -84,22 +51,6 @@ const Div = styled.div`
       outline: none;
       background-color: transparent;
       /* border: 1px solid green; */
-    }
-  }
-
-  .theme-button {
-    width: 45px;
-    height: 45px;
-    cursor: pointer;
-    padding: 5px;
-    border: 1px solid #868686;
-    border-radius: 100%;
-
-    div {
-      background-color: var(--theme-color);
-      width: 100%;
-      height: 100%;
-      border-radius: 100%;
     }
   }
 `;
