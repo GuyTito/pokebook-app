@@ -12,22 +12,27 @@ export default function ListView() {
     <Div>
       <Topbar />
 
-      <CardList />
+      <main>
+        <CardList />
 
-      {showDetailView && <DetailView />}
+        {showDetailView && <DetailView />}
 
-      <div className="footer">
-        <div>pagination</div>
-        <PageSize />
-      </div>
+        <div className="footer">
+          <div>pagination</div>
+          <PageSize />
+        </div>
+      </main>
     </Div>
   );
 }
 
 const Div = styled.div`
-  margin: 0 120px;
-  margin-bottom: 120px;
   /* border: 1px solid red; */
+
+  main {
+    margin: 0 120px;
+    margin-bottom: 120px;
+  }
 
   .footer {
     display: flex;
