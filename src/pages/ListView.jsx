@@ -1,29 +1,23 @@
 import styled from "styled-components";
 import Topbar from "../components/Topbar";
-import Card from "../components/Card";
+import CardList from "../components/CardList";
+import DetailView from "../components/DetailView";
+import { useSelector } from "react-redux";
+import { isDetailView } from "../store/modalSlice";
 
 export default function ListView() {
+  const showDetailView = useSelector(isDetailView);
   return (
     <Div>
       <Topbar />
 
-      <div className="card-list">
-        {[...Array(8).keys()].map((item, i) => (
-          <Card key={i} />
-        ))}
-      </div>
+      <CardList />
+
+      {showDetailView && <DetailView />}
     </Div>
   );
 }
 
 const Div = styled.div`
   margin-bottom: 120px;
-  .card-list {
-    margin: 0 120px;
-    margin-top: 110px;
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 67px;
-    justify-content: center;
-  }
 `;
