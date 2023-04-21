@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 
-export default function Modal({ children, hideModal }) {
+export default function Modal({ children, hideModal, position }) {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => (document.body.style.overflow = "scroll");
@@ -12,7 +12,7 @@ export default function Modal({ children, hideModal }) {
   }
 
   return (
-    <Div onClick={handleClick}>
+    <Div onClick={handleClick} position={position}>
       <div onClick={(e) => e.stopPropagation()}>{children}</div>
     </Div>
   );
@@ -27,7 +27,7 @@ const Div = styled.div`
   display: flex;
   z-index: 999;
   align-items: center;
-  justify-content: center;
+  justify-content: ${(props) => `${props.position}`};
   background: rgba(39, 39, 39, 0.5);
   backdrop-filter: blur(5px);
   overflow: hidden;
