@@ -3,6 +3,8 @@ import Modal from "./Modal";
 import { hideDetailView } from "../store/modalSlice";
 import { useDispatch } from "react-redux";
 import Cover from "./Cover";
+import Content from "./Content";
+import Tabs from "./Tabs";
 
 export default function DetailView() {
   const dispatch = useDispatch();
@@ -13,6 +15,10 @@ export default function DetailView() {
         <Cover />
 
         <h1>Charizard</h1>
+
+        <Content />
+
+        <Tabs />
       </Div>
     </Modal>
   );
@@ -21,7 +27,8 @@ export default function DetailView() {
 const Div = styled.div`
   height: 100vh;
   background-color: white;
-  padding: 17px;
+  /* padding: 17px; */
+  overflow-y: scroll;
 
   h1 {
     font-family: var(--font-clash);
@@ -29,6 +36,6 @@ const Div = styled.div`
     font-weight: 600;
     line-height: 59px;
     text-align: center;
-    margin-top: 78px;
+    margin-bottom: 40px;
   }
 `;
