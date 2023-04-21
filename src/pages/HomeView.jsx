@@ -2,14 +2,17 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Logo from "../assets/logo.svg";
 import SearchIcon from "../assets/search.svg";
+import { useSelector } from "react-redux";
+import { getThemeColor } from "../store/themeSlice";
 
 export default function App() {
+  const themeColor = useSelector(getThemeColor);
   return (
     <Div>
       <img src={Logo} alt="Pokebook Logo" />
 
       <h1>
-        Poké <span>book</span>
+        Poké <span style={{ color: themeColor }}>book</span>
       </h1>
 
       <p>
@@ -17,9 +20,9 @@ export default function App() {
         of.
       </p>
 
-      <form>
+      <form style={{ border: `10px solid ${themeColor}` }}>
         <input type="text" placeholder="Enter pokemon name" />
-        <button type="submit">
+        <button type="submit" style={{ backgroundColor: themeColor }}>
           <img src={SearchIcon} alt="search icon" />
         </button>
       </form>
@@ -44,10 +47,6 @@ const Div = styled.div`
     line-height: 59px;
     font-family: var(--font-clash);
     margin-bottom: 8px;
-
-    span {
-      color: var(--theme-color);
-    }
   }
 
   p {
@@ -62,7 +61,6 @@ const Div = styled.div`
     display: flex;
     justify-content: space-between;
     width: 536px;
-    border: 10px solid var(--theme-color);
     padding: 8px 9px 8px 20px;
     border-radius: 60px;
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.08);
@@ -74,12 +72,10 @@ const Div = styled.div`
       font-size: 24px;
       color: var(--text-gray);
       background-color: transparent;
-      /* border: 1px solid green; */
     }
 
     button {
       padding: 14px;
-      background-color: var(--theme-color);
       color: white;
       border-radius: 50%;
       font-size: 20px;

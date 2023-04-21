@@ -2,10 +2,13 @@ import styled from "styled-components";
 import Charizard from "../assets/charizard.svg";
 import EyeIcon from "../assets/eye_icon.svg";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showDetailView } from "../store/modalSlice";
+import { getThemeColor } from "../store/themeSlice";
 
 export default function Card() {
+  const themeColor = useSelector(getThemeColor);
+
   const [showButton, setShowButton] = useState(false);
   const dispatch = useDispatch();
 
@@ -32,7 +35,11 @@ export default function Card() {
 
       {showButton && (
         <div className="btn-container">
-          <button type="button" onClick={handleClick}>
+          <button
+            type="button"
+            onClick={handleClick}
+            style={{ backgroundColor: themeColor }}
+          >
             <span>View Pokemon</span>
             <img src={EyeIcon} alt="eye icon" />
           </button>
@@ -104,7 +111,6 @@ const Div = styled.div`
 
     button {
       padding: 12px 20px;
-      background: var(--theme-color);
       border-radius: 14px;
       display: flex;
       justify-content: space-between;
