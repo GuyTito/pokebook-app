@@ -37,7 +37,6 @@ const Div = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  /* background-image: url(${MainBg}); */
 
   h1 {
     font-weight: 600;
