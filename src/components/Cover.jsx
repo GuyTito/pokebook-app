@@ -25,6 +25,8 @@ const Div = styled.div`
   background: linear-gradient(180deg, #7fcad1 0%, #3da0a9 100%);
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
+  margin: 17px;
+  margin-bottom: 78px;
 
   button {
     position: absolute;
