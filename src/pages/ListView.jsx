@@ -5,9 +5,11 @@ import DetailView from "../components/DetailView";
 import { useSelector } from "react-redux";
 import { getDetailView } from "../store/modalSlice";
 import PageSize from "../components/PageSize";
+import Pagination from "../components/Pagination";
 
 export default function ListView() {
   const showDetailView = useSelector(getDetailView);
+
   return (
     <Div>
       <Topbar />
@@ -18,7 +20,7 @@ export default function ListView() {
         {showDetailView && <DetailView />}
 
         <div className="footer">
-          <div>pagination</div>
+          <Pagination />
           <PageSize />
         </div>
       </main>
