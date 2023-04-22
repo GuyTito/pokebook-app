@@ -13,7 +13,7 @@ export default function PageSize() {
   }
 
   return (
-    <Div onClick={() => setShowDropdown(!showDropdown)}>
+    <Div>
       <div className="page-size">
         <div className="size">{pageSize}</div>
         <img src={DownIcon} alt="down icon" />
@@ -21,6 +21,7 @@ export default function PageSize() {
         <ul className="content">
           {sizes.map((size) => (
             <li
+              key={size}
               onClick={() => handleClick(size)}
               style={size == pageSize ? { display: "none" } : {}}
             >
