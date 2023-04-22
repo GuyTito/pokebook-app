@@ -1,31 +1,48 @@
 import styled from "styled-components";
-import Charizard from "../assets/charizard.svg";
 import EyeIcon from "../assets/eye_icon.svg";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showDetailView } from "../store/modalSlice";
 import { getThemeColor } from "../store/themeSlice";
+import { useEffect } from "react";
+import { useState } from "react";
+import { viewCreature } from "../store/pokemonSlice";
 
-export default function Card() {
+export default function Card({ pokemon }) {
   const themeColor = useSelector(getThemeColor);
   const dispatch = useDispatch();
+  const [creature, setCreature] = useState({});
 
   function handleClick() {
+    dispatch(viewCreature(creature));
     dispatch(showDetailView());
   }
+
+  useEffect(() => {
+    async function fetchCreature(url) {
+      const response = await fetch(url);
+      const data = await response.json();
+      setCreature(data);
+    }
+
+    fetchCreature(pokemon.url);
+  }, [pokemon]);
 
   return (
     <Div>
       <div className="card">
-        <div className="pic">
-          <img src={Charizard} alt="" />
+        <div className="sprite">
+          <img
+            src={creature.sprites?.other.dream_world.front_default}
+            alt={pokemon.name}
+          />
         </div>
 
-        <h2>charizard</h2>
+        <h2>{pokemon.name}</h2>
 
-        <div className="xtics">
-          <div>🔥 Fire</div>
-          <div>🔥 Fire</div>
+        <div className="types">
+          {creature.types?.map((item, i) => (
+            <div key={i}>{item?.type?.name}</div>
+          ))}
         </div>
 
         <div className="btn-container">
@@ -54,7 +71,7 @@ const Div = styled.div`
     max-height: 330px;
     position: relative;
 
-    .pic {
+    .sprite {
       background-color: #f1f1f1;
       width: 100%;
       height: 148px;
@@ -66,6 +83,9 @@ const Div = styled.div`
         position: absolute;
         top: -55px;
         left: 30px;
+        width: 187.54px;
+        height: 191px;
+        object-fit: contain;
       }
     }
 
@@ -76,19 +96,20 @@ const Div = styled.div`
       line-height: 30px;
       text-align: center;
       margin-bottom: 8px;
+      text-transform: capitalize;
     }
 
-    .xtics {
+    .types {
       display: flex;
       justify-content: center;
       gap: 10px;
-      font-size: 16px;
-      line-height: 22px;
 
       div {
         background: #eeeeee;
         border-radius: 40px;
         padding: 4px 12px;
+        font-size: 16px;
+        line-height: 22px;
       }
     }
 
