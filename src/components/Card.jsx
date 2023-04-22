@@ -50,6 +50,7 @@ const Div = styled.div`
     box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.06);
     border-radius: 20px;
     padding: 10px 10px;
+    padding-bottom: 20px;
     max-height: 330px;
     position: relative;
 
