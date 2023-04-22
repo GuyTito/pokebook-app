@@ -27,11 +27,10 @@ export default function ListView() {
 }
 
 const Div = styled.div`
-  /* border: 1px solid red; */
+  margin-bottom: 120px;
 
   main {
     margin: 0 120px;
-    margin-bottom: 120px;
   }
 
   .footer {
