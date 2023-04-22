@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import BackIcon from "../assets/back_icon.svg";
-import Charizard from "../assets/charizard.svg";
 import { useDispatch } from "react-redux";
 import { hideDetailView } from "../store/modalSlice";
 
-export default function Cover() {
+export default function Cover({ sprite, name }) {
   const dispatch = useDispatch();
 
   return (
@@ -13,7 +12,7 @@ export default function Cover() {
         <img src={BackIcon} alt="back icon" />
       </button>
 
-      <img className="sprite" src={Charizard} alt="" />
+      <img className="sprite" src={sprite} alt={name} />
     </Div>
   );
 }
@@ -44,6 +43,7 @@ const Div = styled.div`
   .sprite {
     width: 312px;
     height: 319px;
+    object-fit: contain;
     position: absolute;
     bottom: -20%;
     /* left: 50%; */

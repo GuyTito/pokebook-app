@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import Charizard from "../assets/charizard.svg";
 
-export default function Cardlet() {
+export default function Cardlet({ pokemon }) {
   return (
     <Div>
       <div className="cover">
-        <img src={Charizard} alt="" />
+        <img src={pokemon.sprites?.other.dream_world.front_default} alt="" />
       </div>
 
-      <h3>charizard</h3>
+      <h3>{pokemon.name}</h3>
     </Div>
   );
 }
@@ -48,5 +47,6 @@ const Div = styled.div`
     line-height: 30px;
     text-align: center;
     margin: 8px 0;
+    text-transform: capitalize;
   }
 `;

@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import Cardlet from "./Cardlet";
 
-export default function Similar() {
+export default function Similar({ similar }) {
   return (
     <Div>
       <h2>Similar</h2>
 
       <div className="content">
-        <Cardlet />
-        <Cardlet />
+        {similar.map((pokemon) => (
+          <Cardlet key={pokemon.id} pokemon={pokemon} />
+        ))}
       </div>
     </Div>
   );

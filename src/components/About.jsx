@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function About() {
+export default function About({ height, weight, abilities }) {
   return (
     <Div>
       <div className="line long"></div>
@@ -11,7 +11,7 @@ export default function About() {
 
         <div className="xtic">
           <div>Height</div>
-          <div>1.0m</div>
+          <div>{height} dm</div>
         </div>
 
         <div className="line-wrapper">
@@ -20,7 +20,7 @@ export default function About() {
 
         <div className="xtic">
           <div>Weight</div>
-          <div>13.7kg</div>
+          <div>{weight} hg</div>
         </div>
 
         <div className="line-wrapper">
@@ -30,8 +30,10 @@ export default function About() {
         <div className="xtic">
           <div>Abilities</div>
           <ul>
-            <li>&#x2022; overgrow</li>
-            <li>&#x2022; chlorophyll</li>
+            {abilities &&
+              abilities.map((item, i) => (
+                <li key={i}>&#x2022; &nbsp; {item.ability.name}</li>
+              ))}
           </ul>
         </div>
 

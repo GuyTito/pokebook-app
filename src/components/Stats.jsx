@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Stats() {
+export default function Stats({ stats }) {
   return (
     <Div>
       <div className="line long"></div>
@@ -9,31 +9,27 @@ export default function Stats() {
       <div className="content">
         <div className="line long"></div>
 
-        <div className="xtic">
-          <div className="left">HP</div>
-          <div className="right">
-            <div className="outer">
-              <div className="inner"></div>
-            </div>
-            <span>60</span>
-          </div>
-        </div>
+        {stats &&
+          stats.map((item, i) => (
+            <>
+              <div key={i} className="xtic">
+                <div className="left">{item.stat.name}</div>
+                <div className="right">
+                  <div className="outer">
+                    <div
+                      className="inner"
+                      style={{ width: item.base_stat }}
+                    ></div>
+                  </div>
+                  <span>{item.base_stat}</span>
+                </div>
+              </div>
 
-        <div className="line-wrapper">
-          <div className="line short"></div>
-        </div>
-
-        <div className="xtic">
-          <div className="left">Attack</div>
-          <div className="right">
-            <div className="outer">
-              <div className="inner"></div>
-            </div>
-            <span>60</span>
-          </div>
-        </div>
-
-        <div className="line long"></div>
+              <div className="line-wrapper">
+                <div className="line short"></div>
+              </div>
+            </>
+          ))}
       </div>
     </Div>
   );
@@ -103,6 +99,7 @@ const Div = styled.div`
         font-family: var(--font-clash);
         font-size: 20px;
         line-height: 25px;
+        text-transform: capitalize;
       }
 
       .right {
@@ -122,7 +119,6 @@ const Div = styled.div`
           height: 8px;
           .inner {
             height: 100%;
-            width: 60%;
             background-color: var(--theme-color);
           }
         }
