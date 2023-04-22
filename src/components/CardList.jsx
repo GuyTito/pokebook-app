@@ -1,12 +1,17 @@
 import styled from "styled-components";
 import Card from "./Card";
+import { useSelector } from "react-redux";
+import { getCurrentPokemons } from "../store/pokemonSlice";
 
 export default function CardList() {
+  const currentPokemons = useSelector(getCurrentPokemons);
+
   return (
     <Div>
-      {[...Array(8).keys()].map((item, i) => (
-        <Card key={i} />
-      ))}
+      {currentPokemons &&
+        currentPokemons.map((pokemon) => (
+          <Card key={pokemon.url} pokemon={pokemon} />
+        ))}
     </Div>
   );
 }
