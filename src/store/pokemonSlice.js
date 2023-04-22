@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchPokemons = createAsyncThunk(
-  "posts/fetchPokemons",
+  "pokemon/fetchPokemons",
   async () => {
     try {
       const response = await fetch(
@@ -20,11 +20,15 @@ const pokemonSlice = createSlice({
   initialState: {
     pokemons: [],
     currentPokemons: [],
+    currentCreature: {},
   },
   reducers: {
     updateCurrentPokemons: (state, action) => {
       const { itemOffset, endOffset } = action.payload;
       state.currentPokemons = state.pokemons.slice(itemOffset, endOffset);
+    },
+    viewCreature: (state, action) => {
+      state.currentCreature = action.payload;
     },
   },
   extraReducers(builder) {
@@ -45,6 +49,7 @@ const pokemonSlice = createSlice({
 
 export const getPokemons = (state) => state.pokemon.pokemons;
 export const getCurrentPokemons = (state) => state.pokemon.currentPokemons;
+export const getCurrentCreature = (state) => state.pokemon.currentCreature;
 
-export const { updateCurrentPokemons } = pokemonSlice.actions;
+export const { updateCurrentPokemons, viewCreature } = pokemonSlice.actions;
 export default pokemonSlice.reducer;
