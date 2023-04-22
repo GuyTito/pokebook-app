@@ -5,7 +5,7 @@ import ThemeModal from "./ThemeModal";
 import TButton from "./TButton";
 import { getThemeColor } from "../store/themeSlice";
 
-export default function Theme() {
+export default function ThemeButton() {
   const displayThemeModal = useSelector(getThemeModal);
   const themeColor = useSelector(getThemeColor);
   const dispatch = useDispatch();

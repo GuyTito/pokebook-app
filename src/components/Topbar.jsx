@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import GrSearchIcon from "../assets/gray_search_icon.svg";
-import Theme from "./Theme";
+import ThemeButton from "./ThemeButton";
 import Brand from "./Brand";
 
 export default function Topbar() {
@@ -15,7 +15,7 @@ export default function Topbar() {
         <input type="text" name="search" placeholder="Enter name of pokemon" />
       </form>
 
-      <Theme />
+      <ThemeButton />
     </Div>
   );
 }
