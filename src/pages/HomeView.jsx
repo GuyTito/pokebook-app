@@ -22,9 +22,12 @@ export default function App() {
 
       <form style={{ border: `10px solid ${themeColor}` }}>
         <input type="text" placeholder="Enter pokemon name" />
-        <button type="submit" style={{ backgroundColor: themeColor }}>
+        {/* <button type="submit">
           <img src={SearchIcon} alt="search icon" />
-        </button>
+        </button> */}
+        <Link to="listview" style={{ backgroundColor: themeColor }}>
+          <img src={SearchIcon} alt="search icon" />
+        </Link>
       </form>
 
       <div className="link">
@@ -74,7 +77,7 @@ const Div = styled.div`
       background-color: transparent;
     }
 
-    button {
+    a {
       padding: 14px;
       color: white;
       border-radius: 50%;
