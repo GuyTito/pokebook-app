@@ -13,7 +13,7 @@ export default function Modal({ children, hideModal, position }) {
 
   return (
     <Div onClick={handleClick} position={position}>
-      <div onClick={(e) => e.stopPropagation()}>{children}</div>
+      {children}
     </Div>
   );
 }
@@ -30,5 +30,4 @@ const Div = styled.div`
   justify-content: ${(props) => `${props.position}`};
   background: rgba(39, 39, 39, 0.5);
   backdrop-filter: blur(5px);
-  overflow: hidden;
 `;
