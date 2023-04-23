@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPageSize } from "../store/pageSlice";
 import { getPokemons, updateCurrentPokemons } from "../store/pokemonSlice";
 import { getThemeColor } from "../store/themeSlice";
+import useViewportWidth from "../utils/useViewPortWidth";
 
 export default function Pagination() {
   const itemsPerPage = useSelector(getPageSize);
@@ -15,6 +16,7 @@ export default function Pagination() {
   const dispatch = useDispatch();
   const pokemons = useSelector(getPokemons);
   const themeColor = useSelector(getThemeColor);
+  const viewportWidth = useViewportWidth();
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
@@ -32,8 +34,8 @@ export default function Pagination() {
       <ReactPaginate
         nextLabel=">"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
-        marginPagesDisplayed={2}
+        pageRangeDisplayed={viewportWidth < 640 ? 1 : 3}
+        marginPagesDisplayed={viewportWidth < 640 ? 0 : 2}
         pageCount={pageCount}
         previousLabel="<"
         renderOnZeroPageCount={null}
