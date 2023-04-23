@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.svg";
 import SearchIcon from "../assets/search.svg";
 import { useSelector } from "react-redux";
@@ -8,6 +8,13 @@ import { lg, md, sm, xl } from "../utils/devices";
 
 export default function App() {
   const themeColor = useSelector(getThemeColor);
+  const navigate = useNavigate();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate("listview");
+  }
+
   return (
     <Div>
       <img src={Logo} className="logo" alt="Pokebook Logo" />
@@ -21,7 +28,7 @@ export default function App() {
         of.
       </p>
 
-      <form style={{ borderColor: `${themeColor}` }}>
+      <form onSubmit={handleSubmit} style={{ borderColor: `${themeColor}` }}>
         <input type="text" placeholder="Enter pokemon name" />
         {/* <button type="submit">
           <img src={SearchIcon} alt="search icon" />
