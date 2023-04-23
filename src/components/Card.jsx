@@ -85,7 +85,8 @@ const Div = styled.div`
       img {
         position: absolute;
         top: -55px;
-        left: 30px;
+        transform: translateX(-50%);
+        left: 50%;
         width: 187.54px;
         height: 191px;
         object-fit: contain;

@@ -34,9 +34,10 @@ const Div = styled.div`
     img {
       position: absolute;
       top: -55px;
-      left: 30px;
       height: 137.62582397460938px;
       width: 137.92498779296875px;
+      transform: translateX(-50%);
+      left: 50%;
     }
   }
 
