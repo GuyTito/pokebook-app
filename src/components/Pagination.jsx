@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPageSize } from "../store/pageSlice";
 import { getPokemons, updateCurrentPokemons } from "../store/pokemonSlice";
 import { getThemeColor } from "../store/themeSlice";
-import useViewportWidth from "../utils/useViewPortWidth";
+import useViewportWidth from "../utils/useViewportWidth";
 
 export default function Pagination() {
   const itemsPerPage = useSelector(getPageSize);
