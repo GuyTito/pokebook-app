@@ -6,6 +6,7 @@ import { getThemeColor } from "../store/themeSlice";
 import { useEffect } from "react";
 import { useState } from "react";
 import { viewCreature } from "../store/pokemonSlice";
+import { pokemonEmojiTypes } from "../utils/pokemonEmojiTypes";
 
 export default function Card({ pokemon }) {
   const themeColor = useSelector(getThemeColor);
@@ -41,7 +42,9 @@ export default function Card({ pokemon }) {
 
         <div className="types">
           {creature.types?.map((item, i) => (
-            <div key={i}>{item?.type?.name}</div>
+            <div key={i}>
+              {pokemonEmojiTypes[item?.type?.name]} &nbsp; {item?.type?.name}
+            </div>
           ))}
         </div>
 
@@ -107,9 +110,10 @@ const Div = styled.div`
       div {
         background: #eeeeee;
         border-radius: 40px;
-        padding: 4px 12px;
+        padding: 6px 12px;
         font-size: 16px;
         line-height: 22px;
+        text-transform: capitalize;
       }
     }
 
