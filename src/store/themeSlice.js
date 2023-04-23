@@ -3,11 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const themeSlice = createSlice({
   name: "theme",
   initialState: {
-    themeColor: "#de527f",
+    themeColor: JSON.parse(localStorage.getItem("poke-theme")) || "#de527f",
   },
   reducers: {
     changeTheme: (state, action) => {
       state.themeColor = action.payload;
+      localStorage.setItem("poke-theme", JSON.stringify(state.themeColor));
     },
   },
 });
