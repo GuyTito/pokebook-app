@@ -17,7 +17,7 @@ export default function ThemeModal() {
 
   return (
     <Modal hideModal={() => dispatch(hideThemeModal())} position="center">
-      <Div>
+      <Div onClick={(e) => e.stopPropagation()}>
         <div className="top">Choose Theme</div>
 
         <div className="bottom">
