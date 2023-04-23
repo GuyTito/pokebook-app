@@ -5,6 +5,7 @@ import { hideDetailView } from "../store/modalSlice";
 import { useEffect } from "react";
 import getDominantColor from "../utils/getDominantColor";
 import { useState } from "react";
+import { lg, md, sm, xl } from "../utils/devices";
 
 export default function Cover({ sprite, name }) {
   const dispatch = useDispatch();
@@ -34,12 +35,22 @@ export default function Cover({ sprite, name }) {
 
 const Div = styled.div`
   position: relative;
-  width: 624px;
-  height: 340px;
+  width: 100%;
+  height: 200px;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 15px;
-  margin: 17px;
-  margin-bottom: 78px;
+  margin-bottom: 20px;
+
+  @media ${sm} {
+    margin-bottom: 40px;
+  }
+  @media ${md} {
+    margin-bottom: 55px;
+  }
+  @media ${xl} {
+    margin-bottom: 78px;
+    height: 350px;
+  }
 
   button {
     position: absolute;
@@ -51,16 +62,32 @@ const Div = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 16px;
+    padding: 10px;
+
+    @media ${sm} {
+      /* padding: px; */
+    }
+    @media ${xl} {
+      padding: 16px;
+    }
   }
 
   .sprite {
-    width: 312px;
-    height: 319px;
     object-fit: contain;
     position: absolute;
     bottom: -20%;
-    /* left: 50%; */
-    transform: translateX(50%);
+    transform: translateX(-50%);
+    left: 50%;
+    width: 200.7px;
+    height: 140.4px;
+
+    @media ${sm} {
+      width: 250px;
+      height: 190px;
+    }
+    @media ${xl} {
+      width: 312px;
+      height: 319px;
+    }
   }
 `;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Cardlet from "./Cardlet";
+import { md, sm } from "../utils/devices";
 
 export default function Similar({ similar }) {
   return (
@@ -21,7 +22,6 @@ const Div = styled.div`
   align-items: center;
 
   h2 {
-    width: 510px;
     padding: 12px;
     font-family: var(--font-clash);
     font-weight: 600;
@@ -29,10 +29,14 @@ const Div = styled.div`
     line-height: 30px;
     text-align: center;
     box-shadow: 0px -28px 24px -24px rgba(0, 0, 0, 0.25);
+    width: 100%;
+
+    @media ${md} {
+      width: 70%;
+    }
   }
 
   .content {
-    width: 510px;
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -42,5 +46,13 @@ const Div = styled.div`
       rgba(233, 233, 233, 0.479167) 52.08%,
       #ffffff 100%
     );
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+
+    @media ${sm} {
+      width: 70%;
+      flex-direction: row;
+    }
   }
 `;

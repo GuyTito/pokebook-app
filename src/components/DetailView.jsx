@@ -9,6 +9,7 @@ import Stats from "./Stats";
 import Similar from "./Similar";
 import { useState } from "react";
 import { getCurrentCreature } from "../store/pokemonSlice";
+import { lg, md, sm, xl } from "../utils/devices";
 
 export default function DetailView() {
   const creature = useSelector(getCurrentCreature);
@@ -56,25 +57,25 @@ export default function DetailView() {
 
   return (
     <Modal hideModal={() => dispatch(hideDetailView())} position="end">
-      <Div>
-        <div>
+      <Div onClick={(e) => e.stopPropagation()}>
+        <div className="cover-wrapper">
           <Cover
             sprite={creature.sprites?.other.dream_world.front_default}
             name={creature.name}
           />
-
-          <h1>{creature.name}</h1>
-
-          {tabs.about && (
-            <About
-              height={creature.height}
-              weight={creature.weight}
-              abilities={creature.abilities}
-            />
-          )}
-          {tabs.stats && <Stats stats={creature.stats} />}
-          {tabs.similar && <Similar similar={similar} />}
         </div>
+
+        <h1>{creature.name}</h1>
+
+        {tabs.about && (
+          <About
+            height={creature.height}
+            weight={creature.weight}
+            abilities={creature.abilities}
+          />
+        )}
+        {tabs.stats && <Stats stats={creature.stats} />}
+        {tabs.similar && <Similar similar={similar} />}
 
         <Tabs swithContent={swithContent} tabs={tabs} />
       </Div>
@@ -83,20 +84,41 @@ export default function DetailView() {
 }
 
 const Div = styled.div`
-  height: 100vh;
+  height: 100%;
   background-color: white;
   overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 100%;
+
+  @media ${sm} {
+    width: 70%;
+    /* padding: 17px; */
+  }
+  @media ${lg} {
+    width: 40%;
+    /* padding: 17px; */
+  }
+
+  .cover-wrapper {
+    padding: 10px;
+  }
 
   h1 {
     font-family: var(--font-clash);
-    font-size: 48px;
+    font-size: 38px;
     font-weight: 600;
     line-height: 59px;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     text-transform: capitalize;
+
+    @media ${sm} {
+      margin-bottom: 40px;
+    }
+    @media ${md} {
+      margin-bottom: 40px;
+    }
+    @media ${xl} {
+      font-size: 48px;
+    }
   }
 `;

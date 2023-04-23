@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { getDetailView } from "../store/modalSlice";
 import PageSize from "../components/PageSize";
 import Pagination from "../components/Pagination";
+import { lg, md, sm, xl } from "../utils/devices";
 
 export default function ListView() {
   const showDetailView = useSelector(getDetailView);
@@ -32,7 +33,15 @@ const Div = styled.div`
   margin-bottom: 120px;
 
   main {
-    margin: 0 120px;
+    margin: 0 20px;
+
+    @media ${md} {
+      margin: 0 80px;
+    }
+
+    @media ${xl} {
+      margin: 0 120px;
+    }
   }
 
   .footer {

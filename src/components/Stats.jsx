@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { md, sm, xl } from "../utils/devices";
 
 export default function Stats({ stats }) {
   return (
@@ -51,11 +52,19 @@ const Div = styled.div`
   }
 
   .long {
-    width: 510px;
+    width: 100%;
+
+    @media ${sm} {
+      width: 70%;
+    }
   }
 
   .short {
     width: 240px;
+
+    @media ${sm} {
+      width: 240px;
+    }
   }
 
   .line-wrapper {
@@ -64,7 +73,7 @@ const Div = styled.div`
   }
 
   h2 {
-    width: 510px;
+    width: 100%;
     padding: 12px;
     font-family: var(--font-clash);
     font-weight: 600;
@@ -72,11 +81,13 @@ const Div = styled.div`
     line-height: 30px;
     text-align: center;
     box-shadow: 0px -28px 24px -24px rgba(0, 0, 0, 0.25);
+
+    @media ${md} {
+      width: 70%;
+    }
   }
 
   .content {
-    /* border: 1px solid red; */
-    width: 510px;
     display: flex;
     flex-direction: column;
     gap: 9px;
@@ -87,18 +98,27 @@ const Div = styled.div`
       #ffffff 100%
     );
 
+    width: 100%;
+    padding: 0 10px;
+
+    @media ${sm} {
+      width: 70%;
+    }
+
     .xtic {
       display: flex;
       gap: 40px;
-      /* border: 1px solid green; */
+      font-size: 16px;
+      line-height: 25px;
+
+      @media ${xl} {
+        font-size: 20px;
+      }
 
       .left {
         text-align: right;
-        /* border: 1px solid red; */
         width: 50%;
         font-family: var(--font-clash);
-        font-size: 20px;
-        line-height: 25px;
         text-transform: capitalize;
       }
 
@@ -106,15 +126,12 @@ const Div = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        /* border: 1px solid blue; */
         width: 50%;
         font-family: var(--font-clash);
         font-weight: 600;
-        font-size: 20px;
-        line-height: 25px;
 
         .outer {
-          width: 190px;
+          width: 70%;
           background-color: #cbcbcb;
           height: 8px;
           .inner {
