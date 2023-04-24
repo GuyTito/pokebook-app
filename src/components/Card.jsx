@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { viewCreature } from "../store/pokemonSlice";
 import { pokemonEmojiTypes } from "../utils/pokemonEmojiTypes";
+import fetchData from "../utils/fetchData";
 
 export default function Card({ pokemon }) {
   const themeColor = useSelector(getThemeColor);
@@ -19,13 +20,12 @@ export default function Card({ pokemon }) {
   }
 
   useEffect(() => {
-    async function fetchCreature(url) {
-      const response = await fetch(url);
-      const data = await response.json();
+    async function fetchCreature() {
+      const data = await fetchData(pokemon.url);
       setCreature(data);
     }
 
-    fetchCreature(pokemon.url);
+    fetchCreature();
   }, [pokemon]);
 
   return (
