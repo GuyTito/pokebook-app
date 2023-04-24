@@ -13,7 +13,7 @@ export default function Stats({ stats }) {
         {stats &&
           stats.map((item, i) => (
             <>
-              <div key={i} className="xtic">
+              <div key={item.name} className="xtic">
                 <div className="left">{item.stat.name}</div>
                 <div className="right">
                   <div className="outer">
