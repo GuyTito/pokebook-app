@@ -5,7 +5,7 @@ import { showDetailView } from "../store/modalSlice";
 import { getThemeColor } from "../store/themeSlice";
 import { useEffect } from "react";
 import { useState } from "react";
-import { viewCreature } from "../store/pokemonSlice";
+import { replaceCurrentCreature } from "../store/pokemonSlice";
 import { pokemonEmojiTypes } from "../utils/pokemonEmojiTypes";
 import fetchData from "../utils/fetchData";
 
@@ -15,7 +15,7 @@ export default function Card({ pokemon }) {
   const [creature, setCreature] = useState({});
 
   function handleClick() {
-    dispatch(viewCreature(creature));
+    dispatch(replaceCurrentCreature(creature));
     dispatch(showDetailView());
   }
 

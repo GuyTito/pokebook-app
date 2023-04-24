@@ -6,7 +6,7 @@ import SearchIcon from "../assets/search.svg";
 import GrSearchIcon from "../assets/gray_search_icon.svg";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, viewCreature } from "../store/pokemonSlice";
+import { getPokemons, replaceCurrentCreature } from "../store/pokemonSlice";
 import { useEffect } from "react";
 import fetchData from "../utils/fetchData";
 import { showDetailView } from "../store/modalSlice";
@@ -42,7 +42,7 @@ export default function Searchbar({ themeColor }) {
 
   async function handleClick(url) {
     const pokemon = await fetchData(url);
-    dispatch(viewCreature(pokemon));
+    dispatch(replaceCurrentCreature(pokemon));
     dispatch(showDetailView());
 
     navigate("/listview");

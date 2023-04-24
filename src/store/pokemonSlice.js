@@ -27,7 +27,7 @@ const pokemonSlice = createSlice({
       const { itemOffset, endOffset } = action.payload;
       state.currentPokemons = state.pokemons.slice(itemOffset, endOffset);
     },
-    viewCreature: (state, action) => {
+    replaceCurrentCreature: (state, action) => {
       state.currentCreature = action.payload;
     },
   },
@@ -51,5 +51,5 @@ export const getPokemons = (state) => state.pokemon.pokemons;
 export const getCurrentPokemons = (state) => state.pokemon.currentPokemons;
 export const getCurrentCreature = (state) => state.pokemon.currentCreature;
 
-export const { updateCurrentPokemons, viewCreature } = pokemonSlice.actions;
+export const { updateCurrentPokemons, replaceCurrentCreature } = pokemonSlice.actions;
 export default pokemonSlice.reducer;
