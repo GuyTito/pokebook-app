@@ -14,6 +14,10 @@ Pokebook offers unique and exciting features such as identifying Pokemon types, 
 
 Pokebook also includes the ability to change themes with three vibrant theme colors available. With pagination and page size selector features, users can easily navigate through the long list of Pokemon.
 
+## Great User Experience with Search Functionality
+
+To further enhance the user experience, a search functionality is also included. This feature allow users to quickly search for a specific Pokemon by name without having to navigate through the long list of available Pokemon. With this added functionality, users can easily find information about their favorite Pokemon or discover new ones they may be interested in.
+
 ## Created as a React Project Challenge
 
 The most exciting thing about Pokebook is the fact that it was created as a React project challenge by me. With my skills and expertise, I was able to create an app that not only provides valuable information about Pokemon, but does so in a way that is both fun and engaging.
@@ -23,16 +27,16 @@ Find below other details about the project.
 ## Screenshots
 
 <details>
-<summary>Desktop Screenshot</summary>
+<summary>Mobile Screenshot</summary>
 
-![Desktop screenshot of project](./pokebookapp-desktop.png)
+![Mobile screenshot of project](./mobile-screenshot.png)
 
 </details>
 
 <details>
-<summary>Mobile Screenshot</summary>
+<summary>Desktop Screenshot</summary>
 
-![Mobile screenshot of project](./pokebookapp-mobile.png)
+![Desktop screenshot of project](./desktop-screenshot.png)
 
 </details>
 
