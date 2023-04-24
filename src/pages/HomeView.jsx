@@ -1,19 +1,13 @@
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../assets/logo.svg";
-import SearchIcon from "../assets/search.svg";
 import { useSelector } from "react-redux";
 import { getThemeColor } from "../store/themeSlice";
-import { lg, md, sm, xl } from "../utils/devices";
+import { md, sm, xl } from "../utils/devices";
+import Searchbar from "../components/Searchbar";
 
 export default function App() {
   const themeColor = useSelector(getThemeColor);
-  const navigate = useNavigate();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    navigate("listview");
-  }
 
   return (
     <Div>
@@ -28,15 +22,7 @@ export default function App() {
         of.
       </p>
 
-      <form onSubmit={handleSubmit} style={{ borderColor: `${themeColor}` }}>
-        <input type="text" placeholder="Enter pokemon name" />
-        {/* <button type="submit">
-          <img src={SearchIcon} alt="search icon" />
-        </button> */}
-        <Link to="listview" style={{ backgroundColor: themeColor }}>
-          <img src={SearchIcon} alt="search icon" />
-        </Link>
-      </form>
+      <Searchbar themeColor={themeColor} />
 
       <div className="link">
         <Link to="listview">View all</Link>
@@ -102,53 +88,6 @@ const Div = styled.div`
       margin-bottom: 96px;
       font-size: 18px;
       width: 370px;
-    }
-  }
-
-  form {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    border-radius: 60px;
-    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.08);
-    margin-bottom: 16px;
-    font-size: 16px;
-    border-width: 5px;
-    padding: 5px 10px;
-
-    @media ${sm} {
-      width: 400px;
-    }
-
-    @media ${md} {
-      padding: 4px 8px;
-      border-width: 5px;
-    }
-
-    @media ${xl} {
-      padding: 8px 9px 8px 20px;
-      font-size: 18px;
-      width: 536px;
-      border-width: 10px;
-    }
-
-    input {
-      width: 100%;
-      outline: none;
-      color: var(--text-gray);
-      background-color: transparent;
-    }
-
-    a {
-      padding: 8px;
-      color: white;
-      border-radius: 50%;
-      font-size: 20px;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-
-      @media ${xl} {
-        padding: 14px;
-      }
     }
   }
 
