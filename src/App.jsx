@@ -10,6 +10,9 @@ export default function App() {
           <Route path="/">
             <Route index element={<HomeView />} />
             <Route path="listview" element={<ListView />} />
+
+            {/* error path */}
+            <Route path="*" element={<HomeView />} />
           </Route>
         </Routes>
       </BrowserRouter>
