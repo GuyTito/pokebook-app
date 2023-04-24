@@ -20,12 +20,12 @@ const Div = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 0;
+  padding: 6px;
   box-shadow: 0px 14px 24px rgba(0, 0, 0, 0.05);
   position: relative;
-  padding: 12px 15px;
 
   @media ${md} {
     padding-right: 52px;
+    padding: 12px 15px;
   }
 `;
