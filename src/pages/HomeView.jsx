@@ -97,6 +97,7 @@ const Div = styled.div`
     line-height: 24px;
     text-decoration-line: underline;
     color: #0d131a;
+    margin-top: 16px;
 
     @media ${xl} {
       padding: 18px;
