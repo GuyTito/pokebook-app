@@ -10,6 +10,8 @@ import Similar from "./Similar";
 import { useState } from "react";
 import { getCurrentCreature } from "../store/pokemonSlice";
 import { lg, md, sm, xl } from "../utils/devices";
+import fetchData from "../utils/fetchData";
+import { fetchSimilarPokemons } from "../utils/fetchSimilarPokemons";
 
 export default function DetailView() {
   const creature = useSelector(getCurrentCreature);
@@ -30,30 +32,9 @@ export default function DetailView() {
     }));
   }
 
-  async function fetchCreature(url) {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  }
-
-  async function findSimilar() {
-    let types = creature.types?.map((item) => item?.type?.name);
-    let typeObjects = await Promise.all(
-      types.map((type) =>
-        fetchCreature(`https://pokeapi.co/api/v2/type/${type}`)
-      )
-    );
-    let pokemonsArr = typeObjects.map((type) => type.pokemon.slice(3, 5));
-    let urls = pokemonsArr.flat().map((obj) => obj.pokemon.url);
-    urls = urls.length > 2 ? urls.slice(0, 2) : urls;
-    let pokemonObjects = await Promise.all(
-      urls.map((url) => fetchCreature(url))
-    );
-
-    setSimilar(pokemonObjects);
-  }
-
-  findSimilar();
+  fetchSimilarPokemons(creature?.types)
+    .then((data) => setSimilar(data))
+    .catch((error) => console.error(error));
 
   return (
     <Modal hideModal={() => dispatch(hideDetailView())} position="end">
