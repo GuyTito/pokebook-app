@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Modal from "./Modal";
-import { hideDetailView } from "../store/modalSlice";
+import { getDetailView, hideDetailView } from "../store/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Cover from "./Cover";
 import Tabs from "./Tabs";
@@ -12,11 +12,14 @@ import { getCurrentCreature } from "../store/pokemonSlice";
 import { lg, md, sm, xl } from "../utils/devices";
 import fetchData from "../utils/fetchData";
 import { fetchSimilarPokemons } from "../utils/fetchSimilarPokemons";
+import { motion } from "framer-motion";
 
 export default function DetailView() {
   const creature = useSelector(getCurrentCreature);
   const dispatch = useDispatch();
   const [similar, setSimilar] = useState([]);
+  const showDetailView = useSelector(getDetailView);
+
   const [tabs, setTabs] = useState({
     about: true,
     similar: false,
@@ -37,8 +40,18 @@ export default function DetailView() {
     .catch((error) => console.error(error));
 
   return (
-    <Modal hideModal={() => dispatch(hideDetailView())} position="end">
-      <Div onClick={(e) => e.stopPropagation()}>
+    <Modal
+      hideModal={() => dispatch(hideDetailView())}
+      position="end"
+      show={showDetailView}
+    >
+      <Div
+        onClick={(e) => e.stopPropagation()}
+        initial={{ x: "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ duration: 0.5 }}
+      >
         <div className="cover-wrapper">
           <Cover
             sprite={creature.sprites?.other.dream_world.front_default}
@@ -64,7 +77,7 @@ export default function DetailView() {
   );
 }
 
-const Div = styled.div`
+const Div = styled(motion.div)`
   height: 100%;
   background-color: white;
   overflow-y: scroll;

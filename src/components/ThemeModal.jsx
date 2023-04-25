@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import Modal from "./Modal";
-import { hideThemeModal } from "../store/modalSlice";
+import { getThemeModal, hideThemeModal } from "../store/modalSlice";
 import TButton from "./TButton";
 import { useDispatch, useSelector } from "react-redux";
 import { changeTheme, getThemeColor } from "../store/themeSlice";
+import { motion } from "framer-motion";
 
 export default function ThemeModal() {
   const dispatch = useDispatch();
   const themeColor = useSelector(getThemeColor);
+  const displayThemeModal = useSelector(getThemeModal);
 
   const themes = ["#de527f", "#39BADF", "#E1A725"];
 
@@ -16,33 +18,45 @@ export default function ThemeModal() {
   }
 
   return (
-    <Modal hideModal={() => dispatch(hideThemeModal())} position="center">
-      <Div onClick={(e) => e.stopPropagation()}>
-        <div className="top">Choose Theme</div>
+    <>
+      <Modal
+        hideModal={() => dispatch(hideThemeModal())}
+        position="center"
+        show={displayThemeModal}
+      >
+        <Div
+          onClick={(e) => e.stopPropagation()}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.5 }}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="top">Choose Theme</div>
 
-        <div className="bottom">
-          <TButton
-            handleFunction={() => switchTheme(themes[0])}
-            bgColor={themes[0]}
-            showBorder={themes[0] == themeColor}
-          />
-          <TButton
-            handleFunction={() => switchTheme(themes[1])}
-            bgColor={themes[1]}
-            showBorder={themes[1] == themeColor}
-          />
-          <TButton
-            handleFunction={() => switchTheme(themes[2])}
-            bgColor={themes[2]}
-            showBorder={themes[2] == themeColor}
-          />
-        </div>
-      </Div>
-    </Modal>
+          <div className="bottom">
+            <TButton
+              handleFunction={() => switchTheme(themes[0])}
+              bgColor={themes[0]}
+              showBorder={themes[0] == themeColor}
+            />
+            <TButton
+              handleFunction={() => switchTheme(themes[1])}
+              bgColor={themes[1]}
+              showBorder={themes[1] == themeColor}
+            />
+            <TButton
+              handleFunction={() => switchTheme(themes[2])}
+              bgColor={themes[2]}
+              showBorder={themes[2] == themeColor}
+            />
+          </div>
+        </Div>
+      </Modal>
+    </>
   );
 }
 
-const Div = styled.div`
+const Div = styled(motion.div)`
   background: #ebebeb;
   border-radius: 32px;
 
