@@ -2,15 +2,11 @@ import styled from "styled-components";
 import Topbar from "../components/Topbar";
 import CardList from "../components/CardList";
 import DetailView from "../components/DetailView";
-import { useSelector } from "react-redux";
-import { getDetailView } from "../store/modalSlice";
 import PageSize from "../components/PageSize";
 import Pagination from "../components/Pagination";
 import { lg, md, sm, xl } from "../utils/devices";
 
 export default function ListView() {
-  const showDetailView = useSelector(getDetailView);
-
   return (
     <Div>
       <Topbar />
@@ -18,7 +14,7 @@ export default function ListView() {
       <main>
         <CardList />
 
-        {showDetailView && <DetailView />}
+        <DetailView />
 
         <div className="footer">
           <Pagination />

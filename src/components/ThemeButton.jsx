@@ -1,12 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { getThemeModal, showThemeModal } from "../store/modalSlice";
+import { showThemeModal } from "../store/modalSlice";
 import ThemeModal from "./ThemeModal";
 import TButton from "./TButton";
 import { getThemeColor } from "../store/themeSlice";
 
 export default function ThemeButton() {
-  const displayThemeModal = useSelector(getThemeModal);
   const themeColor = useSelector(getThemeColor);
   const dispatch = useDispatch();
 
@@ -17,7 +16,7 @@ export default function ThemeButton() {
         bgColor={themeColor}
       />
 
-      {displayThemeModal && <ThemeModal />}
+      <ThemeModal />
     </>
   );
 }
