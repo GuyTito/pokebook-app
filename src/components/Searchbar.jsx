@@ -44,6 +44,7 @@ export default function Searchbar({ themeColor }) {
     const pokemon = await fetchData(url);
     dispatch(replaceCurrentCreature(pokemon));
     dispatch(showDetailView());
+    setSearchTerm("");
 
     navigate("/listview");
   }
@@ -52,7 +53,6 @@ export default function Searchbar({ themeColor }) {
     e.preventDefault();
     if (searchResults?.length > 0) {
       handleClick(searchResults[0]?.url);
-      setSearchTerm("");
     } else navigate("/listview");
   }
 
