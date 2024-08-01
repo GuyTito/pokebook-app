@@ -45,8 +45,8 @@ Find below other details about the project.
 - React.js
 - Styled Components
 - Redux Toolkit for state management
-- RESTful API from [pokeapi.co](pokeapi.co/docs/v2#pokemon-section)
-- Design from Ammiel Yawson
+- RESTful API from [pokeapi.co](https://pokeapi.co/docs/v2)
+- Design from [Ammiel Yawson](https://github.com/AmmDuncan)
 
 ## Project Setup
 
