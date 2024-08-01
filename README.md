@@ -46,7 +46,7 @@ Find below other details about the project.
 - Styled Components
 - Redux Toolkit for state management
 - RESTful API from [pokeapi.co](pokeapi.co/docs/v2#pokemon-section)
-- Design from Enyata Ghana hiring team
+- Design from Ammiel Yawson
 
 ## Project Setup
 
